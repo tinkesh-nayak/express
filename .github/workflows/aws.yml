@@ -35,8 +35,6 @@ env:
   ECR_REPOSITORY: nodeapp-repo          # set this to your Amazon ECR repository name
   ECS_SERVICE: node-service                 # set this to your Amazon ECS service name
   ECS_CLUSTER: nodejscluster                 # set this to your Amazon ECS cluster name
-  ECS_TASK_DEFINITION: arn:aws:ecs:ap-south-1:904940538083:task-definition/mynodeapp:6 # set this to the path to your Amazon ECS task definition
-                                               # file, e.g. .aws/task-definition.json
   CONTAINER_NAME: nodeapp           # set this to the name of the container in the
                                                # containerDefinitions section of your task definition
 
@@ -63,6 +61,10 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
 
+      name: Download task definition
+          run: |
+              aws ecs describe-task-definition --task-definition fargate-node-task-defn --query taskDefinition > task-definition.json
+
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
       env:
@@ -77,10 +79,10 @@ jobs:
         echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
     - name: Fill in the new image ID in the Amazon ECS task definition
-      id: tasks-def
+      id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
-        task-definition: ${{ env.ECS_TASK_DEFINITION }}
+        task-definition: task-definition.json
         container-name: ${{ env.CONTAINER_NAME }}
         image: ${{ steps.build-image.outputs.image }}
 
