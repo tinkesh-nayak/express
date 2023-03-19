@@ -10,12 +10,12 @@ RUN apt install nodejs -y
 
 RUN apt install npm -y
 
-COPY . .
+RUN git clone https://github.com/tinkesh-nayak/express.git
 
 EXPOSE 3000
 
-RUN chmod +x /home/script.sh
+RUN chmod +x /home/express/script.sh
 
-ENTRYPOINT ["/home/script.sh"]
+ENTRYPOINT ["/home/express/script.sh"]
 
 CMD ["foreman", "start"]
