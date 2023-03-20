@@ -1,8 +1,5 @@
 
 {
-  "requiresCompatibilities": [
-        "FARGATE"
-    ],
   
   "family": "mynodeapp",
   "containerDefinitions": [
