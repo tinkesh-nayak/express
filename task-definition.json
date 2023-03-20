@@ -17,7 +17,7 @@
               "hostPort": 3000
           }
       ],
-      "essential": true,
+      "essential": true
     }
   ]
 }
