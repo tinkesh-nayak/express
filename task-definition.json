@@ -1,0 +1,25 @@
+{
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "inferenceAccelerators": [],
+    "containerDefinitions": [
+        {
+            "name": "nodeapp",
+            "image": "904940538083.dkr.ecr.ap-south-1.amazonaws.com/nodeapp-repo:latest",
+
+            "essential": true,
+            "portMappings": [
+                {
+                    "containerPort": "3000",
+                    "hostPort": 3000
+                }
+                
+            ]
+        }
+    ],
+    "executionRoleArn": "arn:aws:iam::904940538083:role/ecsTaskRole",
+    "family": "mynodeapp",
+    "taskRoleArn": "arn:aws:ecs:ap-south-1:904940538083:task-definition/mynodeapp:7",
+    "placementConstraints": []
+}
