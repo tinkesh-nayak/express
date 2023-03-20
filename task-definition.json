@@ -20,6 +20,4 @@
     ],
     "executionRoleArn": "arn:aws:iam::904940538083:role/ecsTaskRole",
     "family": "mynodeapp",
-    "taskRoleArn": "arn:aws:ecs:ap-south-1:904940538083:task-definition/mynodeapp:7",
-    "placementConstraints": []
 }
