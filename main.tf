@@ -1,3 +1,3 @@
 module "terraform" {
-  source = "terraform"
+  source = "modules/terraform"
 }
