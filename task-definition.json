@@ -1,9 +1,9 @@
 
 {
-  
-  "family": "mynodeapp",
+
   "containerDefinitions": [
     {
+      "essential": true,
       "name": "nodeapp",
       "image": "904940538083.dkr.ecr.ap-south-1.amazonaws.com/nodeapp-repo:latest",
       "cpu": 1024,
@@ -14,7 +14,11 @@
               "hostPort": 3000
           }
       ],
-      "essential": true
+   "family": "mynodeapp",
+   "networkMode": "awsvpc",
+   "requiresCompatibilities": [ 
+          "FARGATE" 
+    ] 
     }
   ]
 }
