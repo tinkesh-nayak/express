@@ -1,6 +1,6 @@
 
 {
-
+  
   "containerDefinitions": [
     {
       "essential": true,
@@ -13,12 +13,13 @@
               "containerPort": 3000,
               "hostPort": 3000
           }
-      ],
-   "family": "mynodeapp",
-   "networkMode": "awsvpc",
-   "requiresCompatibilities": [ 
-          "FARGATE" 
-    ] 
+      ]
     }
-  ]
+  ],
+  "executionRoleArn": "arn:aws:iam::904940538083:role/ecsTaskRole",
+  "family": "mynodeapp",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": [ 
+         "FARGATE" 
+   ]
 }
