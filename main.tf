@@ -1,3 +1,3 @@
-module "provider" {
+module "terraform" {
   source = "terraform"
 }
