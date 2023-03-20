@@ -1,23 +1,23 @@
+
 {
-    "requiresCompatibilities": [
+  "requiresCompatibilities": [
         "FARGATE"
     ],
-    "inferenceAccelerators": [],
-    "containerDefinitions": [
-        {
-            "name": "nodeapp",
-            "image": "904940538083.dkr.ecr.ap-south-1.amazonaws.com/nodeapp-repo:latest",
-
-            "essential": true,
-            "portMappings": [
-                {
-                    "containerPort": "3000",
-                    "hostPort": 3000
-                }
-                
-            ]
-        }
-    ],
-    "executionRoleArn": "arn:aws:iam::904940538083:role/ecsTaskRole",
-    "family": "mynodeapp",
+  
+  "family": "mynodeapp",
+  "containerDefinitions": [
+    {
+      "name": "nodeapp",
+      "image": "904940538083.dkr.ecr.ap-south-1.amazonaws.com/nodeapp-repo:latest",
+      "cpu": 1024,
+      "memory": 2048,
+      "portMappings": [
+          {
+              "containerPort": 3000,
+              "hostPort": 3000
+          }
+      ],
+      "essential": true,
+    }
+  ]
 }
